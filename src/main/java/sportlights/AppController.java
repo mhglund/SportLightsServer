@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080", "http://localhost:8100", "https://pvt.dsv.su.se/Group02"})
+@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080", "http://localhost:8100", "https://pvt.dsv.su.se/Group02", "http://pvt.dsv.su.se/Group02"})
 @RestController
 public class AppController {
     private ArrayList<Field> fields;
@@ -18,7 +18,7 @@ public class AppController {
         fields.add(new Field("Enskede IP"));
         fields.add(new Field("Zinkensdamm IP"));
     }
-
+    @CrossOrigin(origins = {"http://localhost:8100", "https://pvt.dsv.su.se/Group02"})
     @RequestMapping("/field")
     public Collection<Field> goodField() {
 
