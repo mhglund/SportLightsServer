@@ -35,7 +35,6 @@ public class AppController {
       return getApi();
   }
 
-  @RequestMapping
   public String getApi() {
       ResponseEntity<String> entity = restTemplate.getForEntity(apiUrl + apiKey, String
               .class);
