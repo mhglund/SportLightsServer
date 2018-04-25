@@ -1,5 +1,8 @@
 package sportlights;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -58,7 +61,6 @@ public class Field {
         }
 
     }
-
 
     @Override
   public String toString() {
