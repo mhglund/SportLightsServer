@@ -3,13 +3,13 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.active_lights</groupId>
-	<artifactId>ActiveLights</artifactId>
+	<groupId>grupp02</groupId>
+	<artifactId>sportlights</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
-	<name>ActiveLights</name>
-	<description>ActiveLights Web Application</description>
+	<name>SportLights</name>
+	<description>SportLights Web Application</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -122,7 +122,7 @@
         <repository>
             <id>pvt15.repo</id>
             <name>PVT15 Repo</name>
-            <url>git@github.com:Mikwizey/ActiveLights.git</url>
+            <url>git@github.com:mhglund/SportLightsServer.git</url>
         </repository>
     </distributionManagement>
 
