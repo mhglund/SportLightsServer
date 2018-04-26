@@ -1,5 +1,8 @@
 package sportlights;
 
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -48,17 +51,16 @@ public class Field {
         double noiseLevel = Math.floor(Math.random() * 3) + 1;
 
         if (noiseLevel == 1) {
-            this.visitors ="Belastning: låg";
+            this.visitors ="Låg belastning";
         }
         if (noiseLevel == 2) {
-            this.visitors = "Belastning: medel";
+            this.visitors = "Medel belastning";
         }
         if (noiseLevel == 3) {
-            this.visitors = "Belastning: hög";
+            this.visitors = "Hög belastning";
         }
 
     }
-
 
     @Override
   public String toString() {
