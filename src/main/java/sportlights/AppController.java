@@ -17,6 +17,10 @@ public class AppController {
         fields = new ArrayList<>();
         fields.add(new Field("Enskede IP"));
         fields.add(new Field("Zinkensdamm IP"));
+        fields.add(new Field("Hjorthagens IP"));
+        fields.add(new Field("Kristinebergs IP"));
+        fields.add(new Field("Hammarbyhöjdens IP"));
+        fields.add(new Field("Sätra IP"));
     }
 
     @RequestMapping("/field")
