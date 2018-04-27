@@ -45,6 +45,6 @@ public class AppController {
      for (String name: names) {
        fields.add(new Field(name));
      }
-     fields.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
+     fields.sort(Comparator.comparing(Field::getName));
   }
 }
