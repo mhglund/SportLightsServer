@@ -30,11 +30,6 @@ public class AppController {
         return fields;
     }
 
-  @RequestMapping("/api")
-  public void api() {
-      getApi();
-  }
-
     public void getApi() {
      ResponseEntity<String> entity = restTemplate.getForEntity(apiUrl + apiKey, String.class);
      String body = entity.getBody();
@@ -46,14 +41,10 @@ public class AppController {
          names.add(temp[1].substring(1, temp[1].lastIndexOf('"')));
        }
      }
+
      for (String name: names) {
        fields.add(new Field(name));
      }
-     fields.sort(new Comparator<Field>() {
-         @Override
-         public int compare(Field o1, Field o2) {
-             return o1.getName().compareTo(o2.getName());
-         }
-     });
+     fields.sort((o1, o2) -> o1.getName().compareTo(o2.getName()));
   }
 }
