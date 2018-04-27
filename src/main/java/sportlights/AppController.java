@@ -20,28 +20,32 @@ public class AppController {
 
     public AppController() {
         fields = new ArrayList<>();
-        fields.add(new Field("Enskede IP"));
-        fields.add(new Field("Zinkensdamm IP"));
-        fields.add(new Field("Hjorthagens IP"));
-        fields.add(new Field("Kristinebergs IP"));
-        fields.add(new Field("Hammarbyhöjdens IP"));
-        fields.add(new Field("Sätra IP"));
     }
 
     @RequestMapping("/field")
     public Collection<Field> goodField() {
-
+        getApi();
         return fields;
     }
 
   @RequestMapping("/api")
-  public String api() {
-      return getApi();
+  public void api() {
+      getApi();
   }
 
-    public String getApi() {
-        ResponseEntity<String> entity = restTemplate.getForEntity(apiUrl + apiKey, String
-                                                                  .class);
-     return entity.getBody();
+    public void getApi() {
+     ResponseEntity<String> entity = restTemplate.getForEntity(apiUrl + apiKey, String.class);
+     String body = entity.getBody();
+     String[] subBody = body.split(",");
+     ArrayList<String> names = new ArrayList<>();
+     for (int i = 1; i < subBody.length; i++ ) {
+       if (subBody[i].contains("Name")) {
+         String[] temp = subBody[i].split(":");
+         names.add(temp[1].substring(1, temp[1].lastIndexOf('"')));
+       }
+     }
+     for (String name: names) {
+       fields.add(new Field(name));
+     }
   }
 }
