@@ -8,6 +8,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Comparator;
 
 @CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080", "http://localhost:8100"})
 @RestController
@@ -47,5 +48,11 @@ public class AppController {
      for (String name: names) {
        fields.add(new Field(name));
      }
+     fields.sort(new Comparator<Field>() {
+         @Override
+         public int compare(Field o1, Field o2) {
+             return o1.getName().compareTo(o2.getName());
+         }
+     });
   }
 }
