@@ -25,6 +25,7 @@ public class AppController {
 
     @RequestMapping("/field")
     public Collection<Field> goodField() {
+        fields.clear();
         getApi();
         return fields;
     }
