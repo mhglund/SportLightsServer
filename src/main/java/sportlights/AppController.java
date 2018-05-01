@@ -10,7 +10,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
 
-@CrossOrigin(origins = {"http://localhost:4200", "http://localhost:8080", "http://localhost:8100"})
+@CrossOrigin(origins = "*")
+        //{"http://localhost:4200", "http://localhost:8080", "http://localhost:8100"})
 @RestController
 public class AppController {
   private ArrayList<Field> fields;
@@ -30,7 +31,7 @@ public class AppController {
         return fields;
     }
 
-    public void getApi() {
+    private void getApi() {
      ResponseEntity<String> entity = restTemplate.getForEntity(apiUrl + apiKey, String.class);
      String body = entity.getBody();
      String[] subBody = body.split(",");
