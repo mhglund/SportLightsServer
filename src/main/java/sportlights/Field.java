@@ -12,38 +12,54 @@ public class Field {
 
   @Id @GeneratedValue private Long id;
   private String name;
-  private String visitors;
+    private String visitors;
+    private boolean lights;
 
-  public Field() {}
+    public Field() {}
 
-  public Field(String name) {
-    this.name = name;
-    this.setVisitorAmount();
-  }
+    public Field(String name, Long id) {
+        this.name = name;
+        this.id = id;
+        this.setVisitorAmount();
+    }
 
-  public Long getId() {
-    return id;
-  }
+    public Long getId() {
+        return id;
+    }
 
-  public void setId(Long id) {
-    this.id = id;
-  }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-  public String getName() {
-    return name;
-  }
+    public String getName() {
+        return name;
+    }
 
-  public void setName(String name) {
-    this.name = name;
-  }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-  public String getVisitors() {
-    return visitors;
-  }
 
-  public void setVisitors(String visitors) {
-    this.visitors = visitors;
-  }
+    public void lightsOn() {
+        this.lights = true;
+    }
+
+    public void lightsOff() {
+        this.lights = false;
+    }
+
+    public boolean getLights() {
+        return lights;
+    }
+    
+
+    public String getVisitors() {
+        return visitors;
+    }
+
+    public void setVisitors(String visitors) {
+        this.visitors = visitors;
+    }
 
     //Metod för att sätta planens belastningsgrad.
     private void setVisitorAmount() {
