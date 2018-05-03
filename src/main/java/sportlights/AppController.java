@@ -22,14 +22,14 @@ public class AppController {
   private String apiKey = "&apikey=d2c76f717a554a9bb7496a06fc16b8fc";
   private RestTemplate restTemplate = new RestTemplate();
 
+    //Läser in fotbollsplanerna varje gång servern startar
     public AppController() {
         fields = new ArrayList<>();
+        getApi();
     }
 
     @RequestMapping("/field")
     public Collection<Field> goodField() {
-        fields.clear();
-        getApi();
         return fields;
     }
 
@@ -42,6 +42,17 @@ public class AppController {
         } 
 
         throw new IllegalStateException("Id: " + id + " is not in the list");
+    }
+
+    @RequestMapping("/field/{id}/lightson")
+    public void setLight(@PathVariable("id") Long id) {
+        for(Field f : fields) {
+            if(f.getId() == id)
+                f.lightsOn();
+            return; 
+        }
+
+       throw new IllegalStateException("Id: " + id + " is not in the list");
     }
 
     private void getApi() {
