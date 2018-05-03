@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
 import java.sql.Array;
 
@@ -37,19 +38,21 @@ public class AppController {
     public Field aField(@PathVariable("id") Long id) {
         goodField();
         for(Field f : fields) {
-            if(f.getId() == id) 
-                return f; 
+            if(f.getId() == id) {
+                return f;
+            }
         } 
 
         throw new IllegalStateException("Id: " + id + " is not in the list");
     }
 
-    @RequestMapping("/field/{id}/lightson")
+    @RequestMapping(value="/field/{id}/lightson", method=RequestMethod.PUT)
     public void setLight(@PathVariable("id") Long id) {
         for(Field f : fields) {
-            if(f.getId() == id)
+            if(f.getId() == id) {
                 f.lightsOn();
-            return; 
+                return;
+            }
         }
 
        throw new IllegalStateException("Id: " + id + " is not in the list");
