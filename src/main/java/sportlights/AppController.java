@@ -59,10 +59,13 @@ public class AppController {
         //Ger varje fotbollsplan ett id-nummer tillfälligt innan databasen tar plats
         Long id = (long)0; 
         for (String name: names) {
-            fields.add(new Field(name, id));
+            fields.add(new Field(name, id)); 
             id++;
             
         }
+
+        fields.get(3).lightsOn();
+        
         fields.sort(Comparator.comparing(Field::getName));
     }
 }
