@@ -56,11 +56,12 @@ public class AppController {
             }
         }
 
+        //Ger varje fotbollsplan ett id-nummer tillfälligt innan databasen tar plats
+        Long id = (long)0; 
         for (String name: names) {
-            for (Long i = (long)0; i < names.size(); i++) {
-                Long id = i;
-                fields.add(new Field(name, id));
-            }
+            fields.add(new Field(name, id));
+            id++;
+            
         }
         fields.sort(Comparator.comparing(Field::getName));
     }
