@@ -2,16 +2,22 @@ package sportlights;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.client.RestTemplate;
-import java.sql.Array;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Collection;
 import java.util.Comparator;
+
+import sportlights.Activity;
+import sportlights.ActivityRepository;
 
 @CrossOrigin(origins = "*")
 //{"http://localhost:4200", "http://localhost:8080", "http://localhost:8100"})
@@ -29,14 +35,9 @@ public class AppController {
         getApi();
     }
 
-    @RequestMapping("/field")
-    public Collection<Field> goodField() {
-        return fields;
-    }
+    // Field API
 
-    @RequestMapping("/field/{id}")
-    public Field aField(@PathVariable("id") Long id) {
-        goodField();
+    private Field getFieldByID(Long id) {
         for(Field f : fields) {
             if(f.getId() == id) {
                 return f;
@@ -46,16 +47,52 @@ public class AppController {
         throw new IllegalStateException("Id: " + id + " is not in the list");
     }
 
-    @RequestMapping(value="/field/{id}/lightson", method=RequestMethod.PUT)
-    public void setLight(@PathVariable("id") Long id) {
-        for(Field f : fields) {
-            if(f.getId() == id) {
-                f.lightsOn();
-                return;
-            }
-        }
+    @GetMapping("/field")
+    public Collection<Field> goodField() {
+        return fields;
+    }
 
-       throw new IllegalStateException("Id: " + id + " is not in the list");
+    @GetMapping("/field/{id}")
+    public Field aField(@PathVariable("id") Long id) {
+        goodField();
+        return getFieldByID(id);
+    }
+
+    @PostMapping("/field/{id}/lightson")
+    public void setLight(@PathVariable("id") Long id) {
+        Field f = getFieldByID(id);
+        f.lightsOn();
+    }
+
+    // Field Activity API
+
+    @Autowired
+    private ActivityRepository activityRepository;
+  
+    @GetMapping("/field/{id}/activity")
+    public @ResponseBody Iterable<Activity> getAllActivities(@PathVariable("id") Long id) {
+        return activityRepository.getByFieldName(getFieldByID(id).getName());
+    }
+
+    @GetMapping("/field/{id}/activity/{aid}")
+    public @ResponseBody Activity getActivityByID(@PathVariable("id") Long id,
+                                                            @PathVariable("aid") Long aid) {
+        // ignore field id, as its name is already in the activity structure
+        return activityRepository.findById(aid).get();
+    }
+
+    @PostMapping("/field/{id}/activity/add")
+    public @ResponseBody String addActivity(@PathVariable("id") Long id,
+                                                        @RequestBody String title,
+                                                        @RequestBody String description,
+                                                        @RequestBody Date datetime) {
+        Activity a = new Activity();
+        a.setFieldName(getFieldByID(id).getName());
+        a.setTitle(title);
+        a.setDescription(description);
+        a.setDate(datetime);
+        activityRepository.save(a);
+        return "Saved";
     }
 
     private void getApi() {
@@ -83,3 +120,5 @@ public class AppController {
         fields.sort(Comparator.comparing(Field::getName));
     }
 }
+
+	
