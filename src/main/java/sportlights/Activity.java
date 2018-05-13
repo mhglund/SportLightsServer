@@ -14,7 +14,8 @@ public class Activity {
     private String fieldname;   // To identify the field for this activity
     private String title;
     private String description;
-    private Date datetime;
+	private Date startTime;
+	private Date endTime;
 
 	public Integer getId() {
 		return id;
@@ -48,11 +49,25 @@ public class Activity {
 		this.description = description;
 	}
 
-	public Date getDate() {
-		return datetime;
+	public Date getStartTime() {
+		return startTime;
 	}
 
-	public void setDate(Date datetime) {
-		this.datetime = datetime;
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+
+	public Date getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;	
+	}
+
+	@Override
+	public String toString() {
+	  String string = "Activity{" + "id=" + id + '\'' + '}';
+	return string;
 	}
 }

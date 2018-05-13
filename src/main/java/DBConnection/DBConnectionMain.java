@@ -5,7 +5,7 @@ package DBConnection;
 import java.sql.*;
 
 
-public class DBConnectionMain {
+/*public class DBConnectionMain {
     public static void main(String[] args) throws ClassNotFoundException {
         String server = "jdbc:mysql://mysql.dsv.su.se/anef3448";
         server = server + "?useSSL=false"; // this is only for testing!!!
@@ -46,4 +46,4 @@ public class DBConnectionMain {
             }
         }
     }
-}
+}*/

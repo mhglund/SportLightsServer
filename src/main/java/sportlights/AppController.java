@@ -81,16 +81,19 @@ public class AppController {
         return activityRepository.findById(aid).get();
     }
 
+
     @PostMapping("/field/{id}/activity/add")
-    public @ResponseBody String addActivity(@PathVariable("id") Long id,
+    public @ResponseBody String addActivity(@PathVariable("id") Long id, //maps the HttpRequest body onto a Java object
                                                         @RequestBody String title,
                                                         @RequestBody String description,
-                                                        @RequestBody Date datetime) {
-        Activity a = new Activity();
+                                                        @RequestBody Date startTime,
+                                                        @RequestBody Date endTime) {
+        Activity a = new Activity(); //constructor for a new activity
         a.setFieldName(getFieldByID(id).getName());
         a.setTitle(title);
         a.setDescription(description);
-        a.setDate(datetime);
+        a.setStartTime(startTime);
+        a.setEndTime(endTime);
         activityRepository.save(a);
         return "Saved";
     }
