@@ -87,7 +87,9 @@ public class AppController {
                                                         @RequestBody String title,
                                                         @RequestBody String description,
                                                         @RequestBody Date startTime,
-                                                        @RequestBody Date endTime) {
+                                                        @RequestBody Date endTime,
+                                                        @RequestBody boolean allDay
+                                                        ) {
         Activity a = new Activity(); //constructor for a new activity
         a.setFieldName(getFieldByID(id).getName());
         a.setTitle(title);

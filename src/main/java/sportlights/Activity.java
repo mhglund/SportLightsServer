@@ -16,6 +16,7 @@ public class Activity {
     private String description;
 	private Date startTime;
 	private Date endTime;
+	private boolean allDay;
 
 	public Integer getId() {
 		return id;
@@ -63,6 +64,14 @@ public class Activity {
 
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;	
+	}
+
+	public void setAllDay(){
+		this.allDay = allDay;
+	}
+
+	public boolean getAllDay(){
+		return allDay;
 	}
 
 	@Override
