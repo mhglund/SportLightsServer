@@ -17,7 +17,7 @@ public class AppController {
   @RequestMapping("/field")
   public @ResponseBody Iterable<Field> goodField() {
     System.out.println("/field");
-    return fieldRepository.findAll();
+    return fieldRepository.findAllByOrderByNameAsc();
   }
 
   @RequestMapping("/field/{id}")
