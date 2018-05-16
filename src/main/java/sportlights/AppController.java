@@ -15,7 +15,7 @@ import java.util.Date;
 @RestController
 public class AppController {
   private ArrayList<Field> fields;
-  private ActivityRepository activityRepository;
+  private PlannedActivityRepository plannedActivityRepository;
 
   private String apiUrl =
       "http://api.stockholm.se/ServiceGuideService/ServiceUnitTypes/"
@@ -58,19 +58,19 @@ public class AppController {
   }
 
   @RequestMapping(value = "/field/{id}/activity", method = RequestMethod.GET)
-  public @ResponseBody Iterable<Activity> getAllActivities(@PathVariable("id") Long id) {
-    return activityRepository.getByFieldId(id);
+  public @ResponseBody Iterable<PlannedActivity> getAllPlannedActivities(@PathVariable("id") Long id) {
+    return plannedActivityRepository.getByFieldId(id);
   }
 
   @RequestMapping(value = "/field/{id}/activity/{aid}", method = RequestMethod.GET)
-  public @ResponseBody Activity getActivityByID(
+  public @ResponseBody PlannedActivity getPlannedActivityByID(
       @PathVariable("id") Long id, @PathVariable("aid") Long aid) {
     // ignore field id, as its name is already in the activity structure
-    return activityRepository.findById(aid).get();
+    return plannedActivityRepository.findById(aid).get();
   }
 
   @RequestMapping(value = "/field/{id}/activity/add", method = RequestMethod.POST)
-  public @ResponseBody String addActivity(
+  public @ResponseBody String addPlannedActivity(
       @PathVariable("id") Long id,
       @RequestBody String title,
       @RequestBody String description,
@@ -78,14 +78,14 @@ public class AppController {
       @RequestBody Date endTime,
       @RequestBody Boolean allDay) {
 
-    Activity a = new Activity();
-    a.setFieldId(getFieldByID(id).getId());
+    PlannedActivity a = new PlannedActivity();
+    a.setFieldId(id);
     a.setTitle(title);
     a.setDescription(description);
     a.setStartTime(startTime);
     a.setEndTime(endTime);
     a.setAllDay(allDay);
-    activityRepository.save(a);
+    plannedActivityRepository.save(a);
     return "Saved";
   }
 

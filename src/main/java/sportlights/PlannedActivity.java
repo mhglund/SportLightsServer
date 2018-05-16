@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import java.util.Date;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class Activity {
+public class PlannedActivity {
   @Id @GeneratedValue private Integer id;
 
   private Long fieldId; // To identify the field for this activity
@@ -74,7 +74,7 @@ public class Activity {
 
   @Override
   public String toString() {
-    String string = "Activity{" + "id=" + id + '\'' + '}';
+    String string = "PlannedActivity{" + "id=" + id + '\'' + '}';
     return string;
     }
 }
