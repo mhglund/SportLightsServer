@@ -5,10 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class Rating {
+public class Activity {
     @Id
     @GeneratedValue
-    private int id;
+    private Int id;
 
     private int value;   
 
