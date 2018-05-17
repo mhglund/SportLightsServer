@@ -5,14 +5,19 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*") 
 // {"http://localhost:4200", "http://localhost:8080", "http://localhost:8100"})
 @RestController
+
 public class AppController {
   @Autowired private PlannedActivityRepository plannedActivityRepository;
   @Autowired private FieldRepository fieldRepository;
 
-  // Field API
+  // API som ska anropas av klienten för att skicka en http-förfrågan,
+  // när man vill göra någonting med fotbollsplaner och aktiviteter (fler metodet tillkommer här). 
+  //I klientmetoden som anropar API:et ska man ange strängen med rätt parametrar 
+  //som står inom parentes efter @Requestmapping, för att identifiera att just den metoden ska köras. 
+  
 
   @RequestMapping("/field")
   public @ResponseBody Iterable<Field> goodField() {

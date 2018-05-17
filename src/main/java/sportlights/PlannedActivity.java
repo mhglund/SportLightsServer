@@ -5,11 +5,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.util.Date;
 
-@Entity // This tells Hibernate to make a table out of this class
-public class PlannedActivity {
-  @Id @GeneratedValue private Integer id;
+@Entity // Det här berättar för Hibernate att den ska göra en tabell av klassen. 
+//Hibernate ingår i Spring framework, och sköter automatisk mappning mellan Java-objekt och databastabeller, 
+//så att klassvariabler blir databaskolumner. 
 
-  private Long fieldId; // To identify the field for this activity
+public class PlannedActivity {
+  @Id @GeneratedValue private Integer id;//också något som behövs i varje klass man vill spara som databastabell
+
+  private Long fieldId; // Identifierar vilken fotbollsplan aktiviteten hör till
   private String title;
   private String description;
   private Date startTime;
