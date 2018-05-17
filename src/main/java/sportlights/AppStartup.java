@@ -11,13 +11,16 @@ import java.util.List;
 import java.util.Collection;
 import java.util.Comparator;
 
-//Den här klassen startar upp appen och laddar in fotbollsplanslistan. 
 
-//Efter att den här har körts så är appen redo att ta emot http-förfrågningar.
 @Component
-public class AppStartup implements ApplicationListener<ApplicationReadyEvent> { 
+public class AppStartup implements ApplicationListener<ApplicationReadyEvent> {
 
-    @Autowired //Något som Spring behöver för att veta vad som ska skapas automatiskt vid uppstart
+    /**
+     * This event is executed as late as conceivably possible to indicate that
+     * the application is ready to service requests.
+     */
+
+    @Autowired
     private FieldRepository fieldRepository;
 
     private String apiUrl = "http://api.stockholm.se/ServiceGuideService/ServiceUnitTypes/"
@@ -25,13 +28,11 @@ public class AppStartup implements ApplicationListener<ApplicationReadyEvent> {
     private String apiKey = "&apikey=d2c76f717a554a9bb7496a06fc16b8fc";
     private RestTemplate restTemplate = new RestTemplate();
 
-    //Ser till att getStockholmApi körs vid uppstart
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
         getStockholmApi();
     }
 
-    //Hämtar fotbollsplans-API:t och kollar om namnet redan finns sparat, annars lägger till det. 
     private void getStockholmApi() {
         ResponseEntity<String> entity = restTemplate.getForEntity(apiUrl + apiKey, String.class);
         String body = entity.getBody();
