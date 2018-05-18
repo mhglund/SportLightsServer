@@ -11,6 +11,7 @@ public class Field {
   private String name;
     private String visitors;
     private boolean lights;
+    private Sensor sensor;
 
     public Field() {}
 
@@ -18,6 +19,7 @@ public class Field {
         this.name = name;
         this.id = id;
         this.setVisitorAmount();
+        this.sensor = new Sensor(0);
     }
 
     public Long getId() {
@@ -61,17 +63,7 @@ public class Field {
     //Metod för att sätta planens belastningsgrad.
     private void setVisitorAmount() {
 
-        double noiseLevel = Math.floor(Math.random() * 3) + 1;
-
-        if (noiseLevel == 1) {
-            this.visitors ="Låg belastning";
-        }
-        if (noiseLevel == 2) {
-            this.visitors = "Medel belastning";
-        }
-        if (noiseLevel == 3) {
-            this.visitors = "Hög belastning";
-        }
+        visitors=this.sensor.getVisitors();
 
     }
 
