@@ -26,13 +26,11 @@ import com.gargoylesoftware.htmlunit.html.HtmlTableCell;
 
 public class WebScraperInterbook {
 
-    public static void main(String[] args) {
+    public static TreeSet<BookedActivity> scrapeInterbook(String searchedField) {
 
         // Set för att slippa dubbletter
         TreeSet<BookedActivity> allActivities = new TreeSet<>();
 
-        // Välj vilken anläggning som en vill söka på
-        String searchedField = "Bagarmossens BP";
         
         //String searchedActivity = "Fotboll"; // Vi vill visa alla aktiviteter, därför är denna överflödig
 
@@ -168,6 +166,8 @@ public class WebScraperInterbook {
         // Städa upp efter oss.
         // Undviker förvirrande felmeddelande vid körning
         client.closeAllWindows();
+
+        return allActivities;
     }
     
 }
