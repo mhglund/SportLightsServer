@@ -11,18 +11,8 @@ public class PlannedActivity {
 
   private Long fieldId; // To identify the field for this activity
   private String title;
-  private String description;
   private Date startTime;
   private Date endTime;
-  private boolean allDay;
-
-  public boolean isAllDay() {
-    return allDay;
-  }
-
-  public void setAllDay(boolean allDay) {
-    this.allDay = allDay;
-  }
 
   public Integer getId() {
     return id;
@@ -46,14 +36,6 @@ public class PlannedActivity {
 
   public void setTitle(String title) {
     this.title = title;
-  }
-
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
   }
 
   public Date getStartTime() {
