@@ -32,13 +32,12 @@ public class AppController {
     fieldRepository.findById(id).get().lightsOn();
   }
   
-
   @RequestMapping(value = "/field/{id}/activity", method = RequestMethod.GET)
   public @ResponseBody Iterable<PlannedActivity> getAllPlannedActivities(@PathVariable("id") Long id) {
     System.out.println("/field/" + id + "/activity");
     return plannedActivityRepository.getByFieldId(id);
   }
-
+  
   @RequestMapping(value = "/field/{id}/activity/{aid}", method = RequestMethod.GET)
   public @ResponseBody PlannedActivity getPlannedActivityByID(
       @PathVariable("id") Long id, @PathVariable("aid") Long aid) {
@@ -47,23 +46,15 @@ public class AppController {
     return plannedActivityRepository.findById(aid).get();
   }
 
-  @RequestMapping(value = "/field/{id}/activity/add", method = RequestMethod.POST)
+  @RequestMapping(value = "/field/{id}/activity/add", method = RequestMethod.POST,
+                  consumes = "application/json")
   public @ResponseBody String addPlannedActivity(
       @PathVariable("id") Long id,
-      @RequestBody String title,
-      @RequestBody String description,
-      @RequestBody Date startTime,
-      @RequestBody Date endTime,
-      @RequestBody Boolean allDay) {
+      @RequestBody PlannedActivity a)
+      {
 
     System.out.println("/field/" + id + "/activity/add");
-    PlannedActivity a = new PlannedActivity();
     a.setFieldId(id);
-    a.setTitle(title);
-    a.setDescription(description);
-    a.setStartTime(startTime);
-    a.setEndTime(endTime);
-    a.setAllDay(allDay);
     plannedActivityRepository.save(a);
     return "Saved";
   }
