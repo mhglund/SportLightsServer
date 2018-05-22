@@ -96,13 +96,12 @@ public class AppController {
 
         @RequestMapping(value = "/field/{id}/activity/add", method = RequestMethod.POST,
                         consumes = "application/json")
-        public @ResponseBody String addPlannedActivity(
+        public @ResponseBody PlannedActivity addPlannedActivity(
             @PathVariable("id") Long id,
             @RequestBody PlannedActivity a) {
             System.out.println("/field/" + id + "/activity/add");
             a.setFieldId(id);
-            plannedActivityRepository.save(a);
-            return "Saved";
+            return plannedActivityRepository.save(a);
         }
 
 }
