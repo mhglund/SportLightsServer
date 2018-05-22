@@ -86,12 +86,14 @@ public class AppController {
             return bookedActivities;
         }
 
-        @RequestMapping(value = "/field/{id}/activity/{aid}", method = RequestMethod.GET)
-            public @ResponseBody PlannedActivity getPlannedActivityByID(
-                                                                        @PathVariable("id") Long id, @PathVariable("aid") Long aid) {
+        @RequestMapping(value = "/field/{id}/activity/remove/{aid}", method=RequestMethod.DELETE)
+        public @ResponseBody String removePlannedActivity(
+            @PathVariable("id") long id,
+            @PathVariable("aid") long aid) {
             // ignore field id, as its name is already in the activity structure
             System.out.println("/field/" + id + "/activity" + aid);
-            return plannedActivityRepository.findById(aid).get();
+            plannedActivityRepository.deleteById(aid);
+            return "Aktivitet " + aid + " borttagen";
         }
 
         @RequestMapping(value = "/field/{id}/activity/add", method = RequestMethod.POST,
