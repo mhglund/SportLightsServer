@@ -91,23 +91,24 @@ public class AppController {
         return bookedActivities;
     }
 
-    @RequestMapping(value = "/field/{id}/activity/{aid}", method = RequestMethod.GET)
-    public @ResponseBody PlannedActivity getPlannedActivityByID(
-                                                                @PathVariable("id") Long id, @PathVariable("aid") Long aid) {
-        // ignore field id, as its name is already in the activity structure
-        System.out.println("/field/" + id + "/activity" + aid);
-        return plannedActivityRepository.findById(aid).get();
-    }
+        @RequestMapping(value = "/field/{id}/activity/remove/{aid}", method=RequestMethod.DELETE)
+        public @ResponseBody String removePlannedActivity(
+            @PathVariable("id") long id,
+            @PathVariable("aid") long aid) {
+            // ignore field id, as its name is already in the activity structure
+            System.out.println("/field/" + id + "/activity" + aid);
+            plannedActivityRepository.deleteById(aid);
+            return "Aktivitet " + aid + " borttagen";
+        }
 
-    @RequestMapping(value = "/field/{id}/activity/add", method = RequestMethod.POST,
-                    consumes = "application/json")
-                    public @ResponseBody String addPlannedActivity(
-                                                                   @PathVariable("id") Long id,
-                                                                   @RequestBody PlannedActivity a) {
-        System.out.println("/field/" + id + "/activity/add");
-        a.setFieldId(id);
-            plannedActivityRepository.save(a);
-            return "Saved";
+        @RequestMapping(value = "/field/{id}/activity/add", method = RequestMethod.POST,
+                        consumes = "application/json")
+        public @ResponseBody PlannedActivity addPlannedActivity(
+            @PathVariable("id") Long id,
+            @RequestBody PlannedActivity a) {
+            System.out.println("/field/" + id + "/activity/add");
+            a.setFieldId(id);
+            return plannedActivityRepository.save(a);
         }
 
 }
