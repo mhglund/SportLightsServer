@@ -5,10 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Field {
+public class Field implements Comparable<Field> {
 
-  @Id @GeneratedValue private Long id;
-  private String name;
+    @Id @GeneratedValue private Long id;
+    private String name;
     private String visitors;
     private boolean lights;
 
