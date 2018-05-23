@@ -76,7 +76,13 @@ public class Field {
     }
 
     @Override
-  public String toString() {
-    return "Field{" + "id=" + id + ", name='" + name + '\'' + '}';
-  }
+    public int compareTo(Field f) {
+        int lika = this.name.compareTo(f.getName()); 
+        return lika;
+    }
+
+    @Override
+    public String toString() {
+        return "Field{" + "id=" + id + ", name='" + name + '\'' + '}';
+    }
 }
