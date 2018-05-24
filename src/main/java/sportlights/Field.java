@@ -3,6 +3,7 @@ package sportlights;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Field implements Comparable<Field> {
@@ -11,7 +12,7 @@ public class Field implements Comparable<Field> {
     private String name;
     private String visitors;
     private boolean lights;
-    private Sensor sensor;
+    @Transient private Sensor sensor;
 
     public Field() {}
 
@@ -63,7 +64,7 @@ public class Field implements Comparable<Field> {
     //Metod för att sätta planens belastningsgrad.
     private void setVisitorAmount() {
 
-        visitors=this.sensor.getVisitors();
+        visitors = this.sensor.getVisitors();
 
     }
 
