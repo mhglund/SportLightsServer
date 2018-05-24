@@ -5,10 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Field {
+public class Field implements Comparable<Field> {
 
-  @Id @GeneratedValue private Long id;
-  private String name;
+    @Id @GeneratedValue private Long id;
+    private String name;
     private String visitors;
     private boolean lights;
     private Sensor sensor;
@@ -68,7 +68,13 @@ public class Field {
     }
 
     @Override
-  public String toString() {
-    return "Field{" + "id=" + id + ", name='" + name + '\'' + '}';
-  }
+    public int compareTo(Field f) {
+        int lika = this.name.compareTo(f.getName()); 
+        return lika;
+    }
+
+    @Override
+    public String toString() {
+        return "Field{" + "id=" + id + ", name='" + name + '\'' + '}';
+    }
 }
