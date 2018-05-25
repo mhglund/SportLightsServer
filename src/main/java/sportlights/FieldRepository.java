@@ -8,6 +8,6 @@ import java.util.List;
 // CRUD refers Create, Read, Update, Delete
 
 public interface FieldRepository extends CrudRepository<Field, Long> {
-    public List<Field> findByName(String name);
-    public List<Field> findAllByOrderByNameAsc();
+    List<Field> findByName(String name);
+    List<Field> findAllByOrderByNameAsc();
 }

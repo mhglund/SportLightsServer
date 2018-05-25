@@ -19,7 +19,7 @@ public class Field implements Comparable<Field> {
   public Field(String name, Long id) {
     this.name = name;
     this.id = id;
-    this.setVisitorAmount();
+    this.setVisitors();
   }
 
   public Long getId() {
@@ -54,19 +54,14 @@ public class Field implements Comparable<Field> {
     return visitors = sensor.getVisitors();
   }
 
-  public void setVisitors(String visitors) {
-    this.visitors = visitors;
-  }
-
   // Metod för att sätta planens belastningsgrad.
-  private void setVisitorAmount() {
+  public void setVisitors() {
     visitors = sensor.getVisitors();
   }
 
   @Override
   public int compareTo(Field f) {
-    int lika = this.name.compareTo(f.getName());
-    return lika;
+    return this.name.compareTo(f.getName());
   }
 
   @Override
