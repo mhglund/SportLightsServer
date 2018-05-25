@@ -14,6 +14,9 @@ import java.util.Date;
 public class AppController {
   @Autowired private PlannedActivityRepository plannedActivityRepository;
   @Autowired private FieldRepository fieldRepository;
+  @Autowired private PlannedActivityRepository userRepository;
+  @Autowired private FieldRepository ratingRepository;
+  @Autowired private FieldRepository favoriteRepository;
 
   // 2 hashtabeller för att hålla koll på när bokade aktiviteter senast hämtades
   private Hashtable<String, LocalDateTime> lastUpdated;

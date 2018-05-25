@@ -7,24 +7,22 @@ import javax.persistence.Id;
 @Entity
 public class User {
 
-  @Id @GeneratedValue private Long id;
+  @Id @GeneratedValue private Long userId;
   private String name;
-    private String visitors;
-    private boolean lights;
 
     public User() {}
 
-    public User(String name, Long id) {
+    public User(String name, Long userId) {
         this.name = name;
-        this.id = id;
+        this.userId = userId;
     }
 
-    public Long getId() {
-        return id;
+    public Long getUid() {
+        return userId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUid(Long uid) {
+        this.userId = userId;
     }
 
     public String getName() {
@@ -34,18 +32,9 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
-    
-
-    public String getVisitors() {
-        return visitors;
-    }
-
-    public void setVisitors(String visitors) {
-        this.visitors = visitors;
-    }
 
     @Override
   public String toString() {
-    return "User{" + "id=" + id + ", name='" + name + '\'' + '}';
+    return "User{" + "userId=" + userId + ", name='" + name + '\'' + '}';
   }
 }

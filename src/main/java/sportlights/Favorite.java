@@ -5,31 +5,30 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class Rating {
+public class Favorite {
     @Id
     @GeneratedValue
     private long userId;
-
-    private int value;   
+    private boolean isFavorite = false;   
 
 	public long getUserId() {
 		return userId;
 	}
 
-	public void setUid(long uid) {
+	public void setUserId(long uid) {
 		this.userId = userId;
 	}
 
-	public int getValue() {
-		return value;
+	public boolean getIsFavorite() {
+		return isFavorite;
 	}
 
-	public void setValue(int value) {
-		this.value = value;
+	public void setIsFavorite(boolean isFavorite) {
+		this.isFavorite = isFavorite;
 	}
     @Override
 
     public String toString() {
-        return "Rating{" + "userId=" + userId + ", value='" + value + '\'' + '}';
+        return "Rating{" + "userId=" + userId + ", isFavorite='" + isFavorite + '\'' + '}';
   }
 }
