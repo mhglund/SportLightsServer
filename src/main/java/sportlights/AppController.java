@@ -23,6 +23,9 @@ public class AppController {
   @RequestMapping("/field")
   public @ResponseBody Iterable<Field> goodField() {
     System.out.println("/field");
+    for (Field field: fieldRepository.findAllByOrderByNameAsc()){
+      field.setVisitors();
+    }
     return fieldRepository.findAllByOrderByNameAsc();
   }
 
