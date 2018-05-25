@@ -17,11 +17,11 @@ public class User {
         this.userId = userId;
     }
 
-    public Long getUid() {
+    public Long getUserid() {
         return userId;
     }
 
-    public void setUid(Long uid) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 

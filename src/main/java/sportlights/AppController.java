@@ -14,9 +14,9 @@ import java.util.Date;
 public class AppController {
   @Autowired private PlannedActivityRepository plannedActivityRepository;
   @Autowired private FieldRepository fieldRepository;
-  @Autowired private PlannedActivityRepository userRepository;
-  @Autowired private FieldRepository ratingRepository;
-  @Autowired private FieldRepository favoriteRepository;
+  @Autowired private UserRepository userRepository;
+  @Autowired private RatingRepository ratingRepository;
+  @Autowired private FavoriteRepository favoriteRepository;
 
   // 2 hashtabeller för att hålla koll på när bokade aktiviteter senast hämtades
   private Hashtable<String, LocalDateTime> lastUpdated;
@@ -117,5 +117,17 @@ public class AppController {
     System.out.println("/field/" + id + "/activity/add");
     a.setFieldId(id);
     return plannedActivityRepository.save(a);
+  }
+
+  @RequestMapping(
+    value = "/user/{id}/field/{id}add",
+    method = RequestMethod.POST,
+    consumes = "application/json"
+  )
+  public @ResponseBody Favorite addFavorite(
+      @PathVariable("userId") Long userId,
+      @PathVariable("fieldId") Long id, @RequestBody Favorite favorite) {
+    System.out.println("/user/" + userId + "/field/" + id + "/favorite/add");
+    return favoriteRepository.save(favorite);
   }
 }

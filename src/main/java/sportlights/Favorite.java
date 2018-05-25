@@ -8,27 +8,12 @@ import javax.persistence.Id;
 public class Favorite {
     @Id
     @GeneratedValue
-    private long userId;
-    private boolean isFavorite = false;   
+	private Field field;  
+	private User user; 
 
-	public long getUserId() {
-		return userId;
-	}
-
-	public void setUserId(long uid) {
-		this.userId = userId;
-	}
-
-	public boolean getIsFavorite() {
-		return isFavorite;
-	}
-
-	public void setIsFavorite(boolean isFavorite) {
-		this.isFavorite = isFavorite;
-	}
     @Override
 
     public String toString() {
-        return "Rating{" + "userId=" + userId + ", isFavorite='" + isFavorite + '\'' + '}';
+        return "Rating{" + "userId=" + user + ", field='" + field + '\'' + '}';
   }
 }
