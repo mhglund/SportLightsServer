@@ -7,8 +7,8 @@ import javax.persistence.Id;
 @Entity
 public class User {
 
-  @Id @GeneratedValue private Long userId;
-  private String name;
+    @Id @GeneratedValue private Long userId;
+    private String name;
 
     public User() {}
 
@@ -34,7 +34,7 @@ public class User {
     }
 
     @Override
-  public String toString() {
-    return "User{" + "userId=" + userId + ", name='" + name + '\'' + '}';
-  }
+    public String toString() {
+        return "User{" + "userId=" + userId + ", name='" + name + '\'' + '}';
+    }
 }
