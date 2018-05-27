@@ -6,7 +6,7 @@ import java.util.List;
 // This will be AUTO IMPLEMENTED by Spring into a Bean called plannedActivityRepository
 // CRUD refers Create, Read, Update, Delete
 
-public interface PlannedActivityRepository extends CrudRepository<PlannedActivity, Long> {
+public interface PlannedActivityRepository extends CrudRepository<PlannedActivity, Integer> {
 
   public List<PlannedActivity> getByFieldId(Long id);
 }
