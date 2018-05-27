@@ -10,11 +10,11 @@ public class Favorite {
     @Id @GeneratedValue Long dummyId;
 
     private Long fieldId;
-	private Long userId; 
+	private String userId;
 
     public Favorite() {}
 
-    public Favorite(Long fieldId, Long userId) {
+    public Favorite(Long fieldId, String userId) {
         this.fieldId = fieldId;
         this.userId = userId;
     }
@@ -27,16 +27,16 @@ public class Favorite {
         this.fieldId = fieldId;
     }
   
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
     
-    public void setId(Long userId) {
+    public void setId(String userId) {
         this.userId = userId;
     }
           
     @Override
     public String toString() {
-        return "Rating{" + "userId=" + userId + ", field='" + fieldId + '\'' + '}';
+        return "Rating{" + "userId=" + this.userId + ", field='" + this.fieldId + '\'' + '}';
   }
 }

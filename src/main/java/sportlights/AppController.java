@@ -120,14 +120,20 @@ public class AppController {
   }
 
   @RequestMapping(
-    value = "/user/{id}/field/{id}add",
+    value = "/user/{userId}/field/{id}/favorite/add",
     method = RequestMethod.POST,
     consumes = "application/json"
   )
   public @ResponseBody Favorite addFavorite(
-      @PathVariable("userId") Long userId,
-      @PathVariable("fieldId") Long id, @RequestBody Favorite favorite) {
+      @PathVariable("userId") String userId,
+      @PathVariable("id") Long id) {
     System.out.println("/user/" + userId + "/field/" + id + "/favorite/add");
+
+    List<Favorite> favorites = favoriteRepository.getByFieldIdAndUserId(id, userId);
+    if (favorites.isEmpty()) {
+      Favorite favorite = new Favorite(id, userId);
     return favoriteRepository.save(favorite);
+  }
+    return favorites.get(0);
   }
 }

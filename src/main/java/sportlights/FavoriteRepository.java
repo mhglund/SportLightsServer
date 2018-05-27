@@ -8,5 +8,6 @@ import java.util.List;
 
 public interface FavoriteRepository extends CrudRepository<Favorite, Long> {
     List<Long> findUserIdByFieldId(Long fieldId);
-    List<Long> findFieldIdByUserId(Long userId);
+    List<Long> findFieldIdByUserId(String userId);
+    List<Favorite> getByFieldIdAndUserId(Long fieldId, String UserId);
 }
