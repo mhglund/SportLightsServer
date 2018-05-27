@@ -100,12 +100,10 @@ public class AppController {
   }
 
   @RequestMapping(value = "/field/{id}/activity/remove/{aid}", method = RequestMethod.DELETE)
-  public @ResponseBody String removePlannedActivity(
-      @PathVariable("id") long id, @PathVariable("aid") long aid) {
-    // ignore field id, as its name is already in the activity structure
-    System.out.println("/field/" + id + "/activity" + aid);
+  public @ResponseBody void removePlannedActivity(
+      @PathVariable("id") Long id, @PathVariable("aid") Integer aid) {
+    System.out.println("/field/" + id + "/activity/" + aid + "/remove");
     plannedActivityRepository.deleteById(aid);
-    return "Aktivitet " + aid + " borttagen";
   }
 
   @RequestMapping(
@@ -133,8 +131,8 @@ public class AppController {
     List<Favorite> favorites = favoriteRepository.getByFieldIdAndUserId(id, userId);
     if (favorites.isEmpty()) {
       Favorite favorite = new Favorite(id, userId);
-    return favoriteRepository.save(favorite);
-  }
+      return favoriteRepository.save(favorite);
+    }
     return favorites.get(0);
   }
 }
