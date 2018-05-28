@@ -154,4 +154,17 @@ public class AppController {
     System.out.println(ratings.get(0));
     return ratings.get(0);
   }
+
+  @RequestMapping(value = "/field/{id}/rating", method = RequestMethod.GET)
+  public @ResponseBody Integer getRateAverage(@PathVariable("id") Long id) {
+    List<Rating> ratings = ratingRepository.getAllByFieldId(id);
+    if (ratings.isEmpty()) {
+      return 0;
+    }
+    int average = 0;
+    for (Rating rating: ratings) {
+      average = average + rating.getValue();
+    }
+    return average/ratings.size();
+  }
 }

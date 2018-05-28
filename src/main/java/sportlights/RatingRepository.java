@@ -7,5 +7,6 @@ import java.util.List;
 // CRUD refers Create, Read, Update, Delete
 
 public interface RatingRepository extends CrudRepository<Rating, Long> {
-  List<Rating> getByUserIdAndFieldId(Long userId, Long FieldId);
+  List<Rating> getByUserIdAndFieldId(Long userId, Long fieldId);
+  List<Rating> getAllByFieldId(Long fieldId);
 }
