@@ -104,6 +104,7 @@ public class AppController {
       @PathVariable("id") Long id, @PathVariable("aid") Integer aid) {
     System.out.println("/field/" + id + "/activity/" + aid + "/remove");
     plannedActivityRepository.deleteById(aid);
+    System.out.print("Removed on server side");
   }
 
   @RequestMapping(
@@ -131,18 +132,17 @@ public class AppController {
     List<Favorite> favorites = favoriteRepository.getByFieldIdAndUserId(id, userId);
     if (favorites.isEmpty()) {
       Favorite favorite = new Favorite(id, userId);
-      return favoriteRepository.save(favorite);
-    }
-    return favorites.get(0);
+       return favoriteRepository.save(favorite);
+    } 
+    return   favorites.get(0);
   }
-
+           
   @RequestMapping(value = "/user/{userId}/field/{id}/favorite/remove", method = RequestMethod.DELETE)
   public @ResponseBody void removeFavorite(
       @PathVariable("userId") String userId, @PathVariable("id") Long id) {
     System.out.println("/user/" + userId + "/field/" + id + "/favorite/remove");
-    //List<Favorite> favorites = favoriteRepository.getByFieldIdAndUserId(id, userId);
-    //Favorite favoriteToBeDeleted = favorites.get(0);
-    favoriteRepository.removeByFieldIdAndUserId(id, userId);//deleteById(favoriteToBeDeleted.getDummyId());
-    //favorites.clear();  
+    List<Favorite> favorites = favoriteRepository.getByFieldIdAndUserId(id, userId);
+    Favorite favoriteToBeDeleted = favorites.get(0);
+    favoriteRepository.delete(favoriteToBeDeleted);                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
   }
-}
+ }
