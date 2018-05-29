@@ -157,7 +157,7 @@ public class AppController {
 
     List<Rating> ratings = ratingRepository.getByUserIdAndFieldId(userId, id);
     if (ratings.isEmpty()) {
-      Rating rating = new Rating(value, userId);
+      Rating rating = new Rating(value, userId, id);
       System.out.println(rating);
       return ratingRepository.save(rating);
     }
