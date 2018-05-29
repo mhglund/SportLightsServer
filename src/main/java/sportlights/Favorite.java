@@ -34,13 +34,9 @@ public class Favorite {
     this.userId = userId;
   }
 
-  public void setDummyId() {
-    this.dummyId = dummyId;
-  }
 
-  public long getDummyId() {
-    return dummyId;
-  }
+
+
 
   @Override
   public String toString() {

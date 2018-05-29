@@ -134,7 +134,7 @@ public class AppController {
     return favorites.get(0);
   }
 
-  @RequestMapping(value = "/user/{userId}/field/{id}/favorite/remove", method = RequestMethod.DELETE)
+ /* @RequestMapping(value = "/user/{userId}/field/{id}/favorite/remove", method = RequestMethod.DELETE)
   public @ResponseBody void removeFavorite(
       @PathVariable("userId") String userId, @PathVariable("id") Long id) {
     System.out.println("/user/" + userId + "/field/" + id + "/favorite/remove");
@@ -142,7 +142,7 @@ public class AppController {
     Favorite favoriteToBeDeleted = favorites.get(0);
     favoriteRepository.deleteById(favoriteToBeDeleted.getDummyId());
     favorites.clear();
-  }
+  }*/
 
   @RequestMapping(
     value = "/user/{userId}/field/{id}/rating/{value}",
