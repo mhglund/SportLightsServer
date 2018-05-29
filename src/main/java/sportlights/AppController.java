@@ -6,7 +6,6 @@ import java.util.Hashtable;
 import java.util.TreeSet;
 import java.time.LocalDateTime;
 
-import java.util.Date;
 import java.util.List;
 
 @CrossOrigin(origins = "*")
@@ -27,7 +26,7 @@ public class AppController {
   @RequestMapping("/field")
   public @ResponseBody Iterable<Field> goodField() {
     System.out.println("/field");
-    for (Field field: fieldRepository.findAllByOrderByNameAsc()){
+    for (Field field : fieldRepository.findAllByOrderByNameAsc()) {
       field.setVisitors();
     }
     return fieldRepository.findAllByOrderByNameAsc();
@@ -124,8 +123,7 @@ public class AppController {
     consumes = "application/json"
   )
   public @ResponseBody Favorite addFavorite(
-      @PathVariable("userId") String userId,
-      @PathVariable("id") Long id) {
+      @PathVariable("userId") String userId, @PathVariable("id") Long id) {
     System.out.println("/user/" + userId + "/field/" + id + "/favorite/add");
 
     List<Favorite> favorites = favoriteRepository.getByFieldIdAndUserId(id, userId);
@@ -144,5 +142,39 @@ public class AppController {
     //Favorite favoriteToBeDeleted = favorites.get(0);
     favoriteRepository.removeByFieldIdAndUserId(id, userId);//deleteById(favoriteToBeDeleted.getDummyId());
     //favorites.clear();  
+  }
+
+  @RequestMapping(
+    value = "/user/{userId}/field/{id}/rating/{value}",
+    method = RequestMethod.POST,
+    consumes = "application/json"
+  )
+  public @ResponseBody Rating addRating(
+      @PathVariable("userId") Long userId,
+      @PathVariable("id") Long id,
+      @PathVariable("value") Integer value) {
+    System.out.println("/user/" + userId + "/field/" + id + "/rating/" + value);
+
+    List<Rating> ratings = ratingRepository.getByUserIdAndFieldId(userId, id);
+    if (ratings.isEmpty()) {
+      Rating rating = new Rating(value, userId, id);
+      System.out.println(rating);
+      return ratingRepository.save(rating);
+    }
+    System.out.println(ratings.get(0));
+    return ratings.get(0);
+  }
+
+  @RequestMapping(value = "/field/{id}/rating", method = RequestMethod.GET)
+  public @ResponseBody Integer getRateAverage(@PathVariable("id") Long id) {
+    List<Rating> ratings = ratingRepository.getAllByFieldId(id);
+    if (ratings.isEmpty()) {
+      return 0;
+    }
+    int average = 0;
+    for (Rating rating: ratings) {
+      average = average + rating.getValue();
+    }
+    return average/ratings.size();
   }
 }
