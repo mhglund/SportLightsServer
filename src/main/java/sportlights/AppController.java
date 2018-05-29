@@ -140,9 +140,9 @@ public class AppController {
   public @ResponseBody void removeFavorite(
       @PathVariable("userId") String userId, @PathVariable("id") Long id) {
     System.out.println("/user/" + userId + "/field/" + id + "/favorite/remove");
-    List<Favorite> favorites = favoriteRepository.getByFieldIdAndUserId(id, userId);
-    Favorite favoriteToBeDeleted = favorites.get(0);
-    favoriteRepository.deleteById(favoriteToBeDeleted.getDummyId());
-    favorites.clear();
+    //List<Favorite> favorites = favoriteRepository.getByFieldIdAndUserId(id, userId);
+    //Favorite favoriteToBeDeleted = favorites.get(0);
+    favoriteRepository.removeByFieldIdAndUserId(id, userId);//deleteById(favoriteToBeDeleted.getDummyId());
+    //favorites.clear();  
   }
 }
