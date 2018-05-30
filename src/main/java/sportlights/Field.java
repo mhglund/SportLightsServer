@@ -1,9 +1,6 @@
 package sportlights;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Transient;
+import javax.persistence.*;
 
 @Entity
 public class Field implements Comparable<Field> {
@@ -13,6 +10,17 @@ public class Field implements Comparable<Field> {
   private String visitors;
   private boolean lights;
   @Transient private Sensor sensor = new Sensor(0);
+/*
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "favorite",
+            joinColumns = @JoinColumn(name = "fieldId"),
+            inverseJoinColumns = @JoinColumn(name = "userId")
+    )
+    private List<User> users = new ArrayList<>();
+*/
 
   public Field() {}
 

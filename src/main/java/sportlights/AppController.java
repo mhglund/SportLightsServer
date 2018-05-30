@@ -133,16 +133,15 @@ public class AppController {
     }
     return favorites.get(0);
   }
-    @RequestMapping(value = "/user/{userId}/field/{id}/favorites/get", method = RequestMethod.GET)
-    public @ResponseBody Iterable<Favorite> getFavorites(
-            @PathVariable("userId")  String userId, @PathVariable Long id) {
-        System.out.println("/favorite");
-        for (Favorite favorites : favoriteRepository.getByFieldIdAndUserId(id,userId)){
 
 
-        }
 
-      return favoriteRepository.getByFieldIdAndUserId(id,userId);
+    @RequestMapping(value = "/user/{userId}/favorites/get", method = RequestMethod.GET)
+    public @ResponseBody Iterable<Favorite> getAllFavorites(
+            @PathVariable("userId") String userId) {
+        System.out.println("/user/userId/favorites/get");
+
+      return favoriteRepository.getByUserId(userId);
     }
 
   @RequestMapping(value = "/user/{userId}/field/{id}/favorite/remove", method = RequestMethod.DELETE)

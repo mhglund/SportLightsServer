@@ -1,27 +1,30 @@
 package sportlights;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
 
-    @Id @GeneratedValue private Long userId;
+    @Id @GeneratedValue private String userId;
     private String name;
+
+    /*
+    @ManyToMany(mappedBy = "users")
+    private List<Field> fields = new ArrayList<>();
+    */
 
     public User() {}
 
-    public User(String name, Long userId) {
+    public User(String name, String userId) {
         this.name = name;
         this.userId = userId;
     }
 
-    public Long getUserid() {
+    public String getUserid() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
@@ -32,6 +35,7 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
 
     @Override
     public String toString() {

@@ -10,4 +10,5 @@ import java.util.List;
 public interface FieldRepository extends CrudRepository<Field, Long> {
     List<Field> findByName(String name);
     List<Field> findAllByOrderByNameAsc();
+    Field getFieldById(Long id);
 }

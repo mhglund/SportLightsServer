@@ -11,4 +11,6 @@ public interface FavoriteRepository extends CrudRepository<Favorite, Long> {
     List<Long> findFieldIdByUserId(String userId);
     List<Favorite> getByFieldIdAndUserId(Long fieldId, String userId);
 
+
+    Iterable<Favorite> getByUserId(String userId);
 }

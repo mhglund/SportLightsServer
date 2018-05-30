@@ -1,8 +1,9 @@
 package sportlights;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import javax.persistence.*;
+
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Favorite {
@@ -10,6 +11,8 @@ public class Favorite {
   @Id @GeneratedValue Long dummyId;
   private Long fieldId;
   private String userId;
+
+
 
   public Favorite() {}
 
@@ -34,12 +37,13 @@ public class Favorite {
     this.userId = userId;
   }
 
-
-
+/*public String getFieldName() {
+      return fieldRepository.getFieldById(fieldId).getName();
+}*/
 
 
   @Override
   public String toString() {
-    return "Rating{" + "userId=" + this.userId + ", field='" + this.fieldId + '\'' + '}';
+    return "Rating{" + "userId=" + this.userId + ", field='" + this.fieldId + "' }";
   }
 }
