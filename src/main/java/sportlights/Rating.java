@@ -52,18 +52,7 @@ public class Rating {
 
   @Override
   public String toString() {
-    return "Rating{"
-        + "rateId='"
-        + rateId
-        + ", value='"
-        + value
-        + ", userId='"
-        + userId
-        + ", "
-        + "fieldId='"
-        + fieldId
-        + ""
-        + '\''
-        + '}';
+	return "Rating{" + "rateId='" + rateId + ", value='" + value + ", userId='" + userId + ", " + 
+	"fieldId='" + fieldId + "" + '\'' + '}';
   }
 }

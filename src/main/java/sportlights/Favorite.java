@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Favorite {
+
   // dumma JPA vill absolut ha en unik identitet.  Jaaajaaa.....
   @Id @GeneratedValue Long dummyId;
   private Long fieldId;
@@ -47,3 +48,4 @@ public class Favorite {
     return "Rating{" + "userId=" + this.userId + ", field='" + this.fieldId + "' }";
   }
 }
+
