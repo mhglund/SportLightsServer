@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 public class User {
 
-    @Id @GeneratedValue private String userId;
+    @Id @GeneratedValue private Long  userId;
     private String name;
 
     /*
@@ -15,16 +15,16 @@ public class User {
 
     public User() {}
 
-    public User(String name, String userId) {
+    public User(String name, Long userId) {
         this.name = name;
         this.userId = userId;
     }
 
-    public String getUserid() {
+    public Long getUserid() {
         return userId;
     }
 
-    public void setUserId(String userId) {
+    public void setUserId(Long userId) {
         this.userId = userId;
     }
 
