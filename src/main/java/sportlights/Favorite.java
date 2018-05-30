@@ -11,13 +11,13 @@ public class Favorite {
   // dumma JPA vill absolut ha en unik identitet.  Jaaajaaa.....
   @Id @GeneratedValue Long dummyId;
   private Long fieldId;
-  private String userId;
+  private Long userId;
 
 
 
   public Favorite() {}
 
-  public Favorite(Long fieldId, String userId) {
+  public Favorite(Long fieldId, Long userId) {
     this.fieldId = fieldId;
     this.userId = userId;
   }
@@ -30,17 +30,17 @@ public class Favorite {
     this.fieldId = fieldId;
   }
 
-  public String getUserId() {
+  public Long getUserId() {
     return userId;
   }
 
-  public void setUserId(String userId) {
+  public void setUserId(Long userId) {
     this.userId = userId;
   }
 
-/*public String getFieldName() {
+public String getFieldName(FieldRepository fieldRepository) {
       return fieldRepository.getFieldById(fieldId).getName();
-}*/
+}
 
 
   @Override

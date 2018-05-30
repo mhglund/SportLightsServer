@@ -2,6 +2,8 @@ package sportlights;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.TreeSet;
 import java.time.LocalDateTime;
@@ -123,7 +125,7 @@ public class AppController {
     consumes = "application/json"
   )
   public @ResponseBody Favorite addFavorite(
-      @PathVariable("userId") String userId, @PathVariable("id") Long id) {
+      @PathVariable("userId") Long userId, @PathVariable("id") Long id) {
     System.out.println("/user/" + userId + "/field/" + id + "/favorite/add");
 
     List<Favorite> favorites = favoriteRepository.getByFieldIdAndUserId(id, userId);
