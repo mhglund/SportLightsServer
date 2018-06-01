@@ -8,44 +8,44 @@ import javax.persistence.*;
 @Entity // This tells Hibernate to make a table out of this class
 public class Favorite {
 
-  // dumma JPA vill absolut ha en unik identitet.  Jaaajaaa.....
-  @Id @GeneratedValue Long dummyId;
-  private Long fieldId;
-  private Long userId;
+    // dumma JPA vill absolut ha en unik identitet.  Jaaajaaa.....
+    @Id @GeneratedValue Long dummyId;
+    private Long fieldId;
+    private String userId;
+    
 
 
+    public Favorite() {}
 
-  public Favorite() {}
+    public Favorite(Long fieldId, String userId) {
+        this.fieldId = fieldId;
+        this.userId = userId;
+    }
 
-  public Favorite(Long fieldId, Long userId) {
-    this.fieldId = fieldId;
-    this.userId = userId;
-  }
+    public Long getFieldId() {
+        return fieldId;
+    }
 
-  public Long getFieldId() {
-    return fieldId;
-  }
+    public void setFieldId(Long fieldId) {
+        this.fieldId = fieldId;
+    }
 
-  public void setFieldId(Long fieldId) {
-    this.fieldId = fieldId;
-  }
+    public String getUserId() {
+        return userId;
+    }
 
-  public Long getUserId() {
-    return userId;
-  }
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-  public void setUserId(Long userId) {
-    this.userId = userId;
-  }
-
-public String getFieldName(FieldRepository fieldRepository) {
-      return fieldRepository.getFieldById(fieldId).getName();
-}
+    public String getFieldName(FieldRepository fieldRepository) {
+        return fieldRepository.getFieldById(fieldId).getName();
+    }
 
 
-  @Override
-  public String toString() {
-    return "Rating{" + "userId=" + this.userId + ", field='" + this.fieldId + "' }";
-  }
+    @Override
+    public String toString() {
+        return "Rating{" + "userId=" + this.userId + ", field='" + this.fieldId + "' }";
+    }
 }
 

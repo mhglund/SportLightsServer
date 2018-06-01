@@ -9,50 +9,50 @@ public class Rating {
 
   @Id @GeneratedValue private long rateId;
   private int value;
-  private Long userId;
-  private Long fieldId;
+    private String userId;
+    private Long fieldId;
 
-  public Rating(int value, Long userId, Long fieldId){
-    this.value = value;
-    this.userId = userId;
-    this.fieldId = fieldId;
-  }
+    public Rating(int value, String userId, Long fieldId){
+        this.value = value;
+        this.userId = userId;
+        this.fieldId = fieldId;
+    }
 
-  public long getRateId() {
-    return rateId;
-  }
+    public long getRateId() {
+        return rateId;
+    }
 
-  public void setRateId(long rateId) {
-    this.rateId = rateId;
-  }
+    public void setRateId(long rateId) {
+        this.rateId = rateId;
+    }
 
-  public int getValue() {
-    return value;
-  }
+    public int getValue() {
+        return value;
+    }
 
-  public void setValue(int value) {
-    this.value = value;
-  }
+    public void setValue(int value) {
+        this.value = value;
+    }
 
-  public Long getUserId() {
-    return userId;
-  }
+    public String getUserId() {
+        return userId;
+    }
 
-  public void setUserId(Long userId) {
-    this.userId = userId;
-  }
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
 
-  public Long getFieldId() {
-    return fieldId;
-  }
+    public Long getFieldId() {
+        return fieldId;
+    }
 
-  public void setFieldId(Long fieldId) {
-    this.fieldId = fieldId;
-  }
+    public void setFieldId(Long fieldId) {
+        this.fieldId = fieldId;
+    }
 
-  @Override
-  public String toString() {
+    @Override
+    public String toString() {
 	return "Rating{" + "rateId='" + rateId + ", value='" + value + ", userId='" + userId + ", " + 
-	"fieldId='" + fieldId + "" + '\'' + '}';
-  }
+            "fieldId='" + fieldId + "" + '\'' + '}';
+    }
 }
