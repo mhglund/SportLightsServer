@@ -7,8 +7,8 @@ import java.util.List;
 // CRUD refers Create, Read, Update, Delete
 
 public interface FavoriteRepository extends CrudRepository<Favorite, Long> {
-    List<Long> findUserIdByFieldId(Long fieldId);
+    List<Long> findUserIdByFieldId(Long id);
     List<Long> findFieldIdByUserId(String userId);
-    List<Favorite> getByFieldIdAndUserId(Long fieldId, String userId);
-
+    List<Favorite> getByFieldIdAndUserId(Long id, String userId);
+    Iterable<Favorite> getByUserId(String userId);
 }

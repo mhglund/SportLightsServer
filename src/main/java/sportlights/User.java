@@ -1,14 +1,17 @@
 package sportlights;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
 
     @Id @GeneratedValue private String userId;
     private String name;
+
+    /*
+    @ManyToMany(mappedBy = "users")
+    private List<Field> fields = new ArrayList<>();
+    */
 
     public User() {}
 
@@ -32,6 +35,7 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
 
     @Override
     public String toString() {
