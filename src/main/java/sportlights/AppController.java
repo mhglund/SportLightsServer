@@ -150,7 +150,7 @@ public class AppController {
     consumes = "application/json"
   )
   public @ResponseBody Rating addRating(
-      @PathVariable("userId") Long userId,
+      @PathVariable("userId") String userId,
       @PathVariable("id") Long id,
       @PathVariable("value") Integer value) {
     System.out.println("/user/" + userId + "/field/" + id + "/rating/" + value);

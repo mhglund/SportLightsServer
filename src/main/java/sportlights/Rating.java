@@ -9,10 +9,10 @@ public class Rating {
 
   @Id @GeneratedValue private long rateId;
   private int value;
-  private Long userId;
+  private String userId;
   private Long fieldId;
 
-  public Rating(int value, Long userId, Long fieldId){
+  public Rating(int value, String userId, Long fieldId){
     this.value = value;
     this.userId = userId;
     this.fieldId = fieldId;
@@ -34,11 +34,11 @@ public class Rating {
     this.value = value;
   }
 
-  public Long getUserId() {
+  public String getUserId() {
     return userId;
   }
 
-  public void setUserId(Long userId) {
+  public void setUserId(String userId) {
     this.userId = userId;
   }
 

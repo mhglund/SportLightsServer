@@ -7,21 +7,21 @@ import javax.persistence.Id;
 @Entity
 public class User {
 
-    @Id @GeneratedValue private Long userId;
+    @Id @GeneratedValue private String userId;
     private String name;
 
     public User() {}
 
-    public User(String name, Long userId) {
+    public User(String name, String userId) {
         this.name = name;
         this.userId = userId;
     }
 
-    public Long getUserid() {
+    public String getUserid() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
